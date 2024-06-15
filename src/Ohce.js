@@ -2,7 +2,7 @@ export class Ohce {
   /**
    * @param {MyConsole} console
    */
-  constructor(console) {
+  constructor(console, emailSender) {
     this.console = console
   }
 
@@ -11,9 +11,7 @@ export class Ohce {
    * @returns {Promise<void>}
    */
   async run(name) {
-    const console = this.console
-
-    console.log(`¡Buenos días ${name}!`)
+    this.console.log(`¡Buenos días ${name}!`)
 
     /**
      * @type string
@@ -21,7 +19,7 @@ export class Ohce {
     let word = ""
 
     while (word !== "Stop!") {
-      word = await console.readLine()
+      word = await this.console.readLine()
 
       if (word === "Stop!") {
         break
@@ -29,10 +27,10 @@ export class Ohce {
 
       const reversed = word.split("").reverse().join("")
 
-      console.log(reversed)
+      this.console.log(reversed)
 
       if (reversed === word) {
-        console.log("¡Bonita palabra!")
+        this.console.log("¡Bonita palabra!")
       }
     }
   }
